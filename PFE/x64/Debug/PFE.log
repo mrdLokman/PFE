@@ -1,0 +1,38 @@
+﻿Build started 27/02/2018 14:09:31.
+     1>Project "C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\PFE\PFE.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IF:\OpenCV\opencv\build\include /ZI /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt Pretraitement.cpp
+         Pretraitement.cpp
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(59): warning C4305: 'initializing': truncation from '__int64' to 'int'
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(59): warning C4309: 'initializing': truncation of constant value
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(248): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(258): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(271): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(281): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(293): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(303): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(384): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+     1>c:\users\merdji\documents\visual studio 2015\projects\pfe\pfe\pretraitement.cpp(433): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\x64\Debug\PFE.exe" /INCREMENTAL /NOLOGO opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\x64\Debug\PFE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\x64\Debug\PFE.lib" /MACHINE:X64 x64\Debug\classifier.obj
+         x64\Debug\Composant.obj
+         x64\Debug\Selector.obj
+         x64\Debug\Histogramme.obj
+         x64\Debug\main.obj
+         x64\Debug\main_prog.obj
+         x64\Debug\Pretraitement.obj
+         x64\Debug\Segmentation.obj
+         x64\Debug\Tests.obj
+         PFE.vcxproj -> C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\x64\Debug\PFE.exe
+     1>Done Building Project "C:\Users\Merdji\documents\visual studio 2015\Projects\PFE\PFE\PFE.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.61
