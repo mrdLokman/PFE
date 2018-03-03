@@ -20,7 +20,9 @@ void testCorrectionInclinaison(string imgSource, string imgDest);
 void testcorrectionInclinaisonEliminerBordure(string imgSource, string imgDest);
 
 void testSegmentationProjection(string image);
+vector<cv::Mat> testSegmentationProjection(Mat bin);
 void testSegmentationACC(string image);
+vector<Mat> testSegmentationACC(Mat bin);
 
 void testHistogramme(string image);
 #endif

@@ -110,8 +110,10 @@ using namespace cv;
 		 //Mat binaire_otsu = binarisation(ajustee, B_A_GAUSS, Blur_GAUSS);
 		 //imshow("otsu", binaire_otsu);
 		
-		 testSegmentationProjection("input/binaire.png");
-		 testSegmentationACC("input/binaire.png");
+		// testSegmentationProjection("input/binaire.png");
+		 imshow("segmentation projection", display_images(testSegmentationProjection(binaire_gauss),50,1));
+		 //testSegmentationACC("input/binaire.png");
+		 imshow("segmentation CCA", display_images(testSegmentationACC(binaire_gauss), 50, 1));
 		 imshow("pretraitement", display_images(windows, 400, 6));
 		 waitKey(0);
 		 cvDestroyWindow("plaque");
