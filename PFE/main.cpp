@@ -6,7 +6,7 @@
 #include "Pretraitement.h"
 #include "Tests.h"
 #include"display.h"
-
+#include <vector>
 #include <iostream>
 using namespace std;
 using namespace cv;
@@ -14,8 +14,108 @@ using namespace cv;
 //*******************************************************************img source
  string cars = "C:/Users/lool/Desktop/PFE/dataset image/cars/*.bmp";
 //*****************************************************************
+ std::vector<cv::Mat> MarkCountours(Mat binaryImg)
+ {
+	 vector<vector<Point> > contours;
+	 Mat test = binaryImg.clone();
+	 vector<Vec4i> hierarchy;
+	 RNG rng(12345);
+	 findContours(test, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+	 vector<vector<Point> > contours_poly(contours.size());
+	 vector<Rect> boundRect(contours.size());
+	 vector<Point2f>center(contours.size());
+	 vector<float>radius(contours.size());
+	 int size = contours.size();
+	 for (int i = 0; i <size ; i++)
+	 {
+		 approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
+		 boundRect[i] = boundingRect(Mat(contours_poly[i]));
+	 }
+	 Mat drawing = Mat::zeros(binaryImg.size(), CV_8UC3);
+	 
+	
+	 for (int i = 0; i < size; i++)
+	 {
+		 Scalar color = Scalar(255, 0, 255);
+		 drawContours(drawing, contours_poly, i, color, 1, 8, vector<Vec4i>(), 0, Point());
+		 rectangle(drawing, boundRect[i].tl(), boundRect[i].br(), color, 2, 8, 0);
+		 
+	 }
+	 std::vector<cv::Mat> contour_rois;
+	 for (int i = 0; boundRect.size(); i++)
+	 {
+		 cv::Mat roi(binaryImg, boundRect[i]);
+		 contour_rois.push_back(roi);
+	 }
 
+	 return contour_rois;
+ }
+ int main()
+ {
+	 int largest_area = 0;
+	 int largest_contour_index = 0;
+	 Rect bounding_rect;
 
+	 Mat src = imread("C:/Users/lool/PFE/PFE/output/segACC/000000.png", 1); //Load source image
+	 Mat thr(src.rows, src.cols, CV_8UC1);
+	 Mat dst(src.rows, src.cols, CV_8UC1, Scalar::all(0));
+	 cvtColor(src, thr, CV_BGR2GRAY); //Convert to gray
+	 threshold(thr, thr, 25, 255, THRESH_BINARY); //Threshold the gray
+
+	 vector<vector<Point>> contours; // Vector for storing contour
+	 vector<Vec4i> hierarchy;
+
+	 findContours(thr, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE); // Find the contours in the image
+
+	 for (int i = 0; i< contours.size(); i++) // iterate through each contour. 
+	 {
+		 double a = contourArea(contours[i], false);  //  Find the area of contour
+		 if (a>largest_area) {
+			 largest_area = a;
+			 largest_contour_index = i;                //Store the index of largest contour
+			 bounding_rect = boundingRect(contours[i]); // Find the bounding rectangle for biggest contour
+		 }
+
+	 }
+
+	 Scalar color(255, 255, 255);
+	 drawContours(dst, contours, largest_contour_index, color, CV_FILLED, 8, hierarchy); // Draw the largest contour using previously stored index.
+	 rectangle(src, bounding_rect, Scalar(0, 255, 0), 1, 8, 0);
+	 imshow("src", src);
+	 imshow("largest Contour", dst);
+	 waitKey(0);
+ }
+ int main2()
+ {
+	 Mat image;
+	 image = imread("C:/Users/lool/PFE/PFE/output/segACC/000000.png", 1);
+	 
+	 namedWindow("Display window", CV_WINDOW_AUTOSIZE);
+	 imshow("Display window", image);
+	 Mat gray;
+	 cvtColor(image, gray, CV_BGR2GRAY);
+	 Canny(gray, gray, 100, 200, 3);
+	 MarkCountours(gray);
+	 cout << MarkCountours(gray).size();
+	/// Find contours   
+	 vector<vector<Point> > contours;
+	 vector<Vec4i> hierarchy;
+	 RNG rng(12345);
+	 findContours(gray, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+	 /// Draw contours
+	 Mat drawing = Mat::zeros(gray.size(), CV_8UC3);
+	 for (int i = 0; i< contours.size(); i++)
+	 {
+		 Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+		 drawContours(drawing, contours, i, color, 1, 8, hierarchy, 0, Point());
+	 }
+
+	 imshow("Result window", drawing);
+	 waitKey(0);
+	 return 0;
+ }
+ 
+/*
  int main() {
 	 cv::String path(cars); //select only bmp
 	 vector<cv::String> fn;
@@ -24,7 +124,7 @@ using namespace cv;
 	 for (size_t k = 0; k < fn.size(); ++k)
 	 {
 		 cv::Mat src = cv::imread(fn[k],0);
-		 
+		 windows.clear();
 		 if (src.empty()) continue; //only proceed if sucsessful		 
 		 //cvtColor(src, src, CV_BGR2GRAY);
 		 //-----------------------------------------------------------------
@@ -103,6 +203,7 @@ using namespace cv;
 		 //imshow("gauss", binaire_gauss);
 		 windows.push_back(binaire_gauss);
 		 Mat normalisee = normalisation(binaire_gauss, 50);
+		 windows.push_back(normalisee);
 		 //imshow("normalisee", normalisee);
 
 		 imwrite("input/binaire.png", binaire_gauss);
@@ -116,7 +217,11 @@ using namespace cv;
 		 imshow("segmentation CCA", display_images(testSegmentationACC(binaire_gauss), 50, 1));
 		 imshow("pretraitement", display_images(windows, 400, 6));
 		 waitKey(0);
+		 cvDestroyWindow("pretraitement");
+		 cvDestroyWindow("segmentation CCA");
+		 cvDestroyWindow("segmentation projection");
 		 cvDestroyWindow("plaque");
+		/* cvDestroyWindow("plaque");
 		 cvDestroyWindow("crop");
 		 cvDestroyWindow("rot");
 		 cvDestroyWindow("ajustee");
@@ -133,7 +238,7 @@ using namespace cv;
 	 }
 	 
 
- }
+ }*/
 
 
 
