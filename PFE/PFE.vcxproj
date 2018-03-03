@@ -126,6 +126,7 @@
     <ClCompile Include="classes\classifier.cpp" />
     <ClCompile Include="classes\Composant.cpp" />
     <ClCompile Include="classes\Selector.cpp" />
+    <ClCompile Include="display.cpp" />
     <ClCompile Include="Histogramme.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_prog.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="classes\classifier.h" />
     <ClInclude Include="classes\Composant.h" />
     <ClInclude Include="classes\Selector.h" />
+    <ClInclude Include="display.h" />
     <ClInclude Include="Histogramme.h" />
     <ClInclude Include="Pretraitement.h" />
     <ClInclude Include="Segmentation.h" />
