@@ -98,15 +98,15 @@ using namespace cv;
 		 Mat normalisee = normalisation(binaire_gauss, 50);
 		 windows.push_back(normalisee);
 
-		 imwrite("input/binaire.png", binaire_gauss);
+		 imwrite("input/binaire.png", normalisee);
 
 		 //Mat binaire_eq_hist_otsu = binarisation(normCrop, B_G_OTSU, Blur_GAUSS);
 		 //Mat binaire_otsu = binarisation(ajustee, B_A_GAUSS, Blur_GAUSS);
 		
 		// testSegmentationProjection("input/binaire.png");
-		 imshow("segmentation projection", display_images(testSegmentationProjection(binaire_gauss),50,1));
+		 imshow("segmentation projection", display_images(testSegmentationProjection(normalisee),80,1));
 		 //testSegmentationACC("input/binaire.png");
-		 imshow("segmentation CCA", display_images(testSegmentationACC(binaire_gauss), 50, 1));
+		 imshow("segmentation CCA", display_images(testSegmentationACC(normalisee), 80, 1));
 		 imshow("pretraitement", display_images(windows, 400, 6));
 		 waitKey(0);
 		 cvDestroyWindow("pretraitement");
