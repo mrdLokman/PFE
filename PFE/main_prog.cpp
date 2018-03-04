@@ -26,30 +26,36 @@ void test() {
 	imwrite("input/resultat.png",src);
 }
 
-int main1() {
 
-	Point* coins = new Point[4];
-	coins[0].x = 123; coins[0].y = 362;
-	coins[1].x = 226; coins[1].y = 357;
-	coins[2].x = 226; coins[2].y = 382;
-	coins[3].x = 124; coins[3].y = 388;
+int main()
+{
+	Mat src= imread("C:/Users/lool/PFE/PFE/output/segACC/000000.png", 0);
+	// the first command-line parameter must be a filename of the binary
+	// (black-n-white) image
 	
-	string source = "input/source.bmp";
 
-	//testExtractionDePlaque(source, "output/plaque.png", coins);
+	Mat dst = Mat::zeros(src.rows, src.cols, CV_8UC3);
 
-	//testCorrectionRotation("input/plaque_rotation.png", "output/correction_rotation.png", coins);
+	src = src > 1;
+	namedWindow("Source", 1);
+	imshow("Source", src);
 
-	//testCorrectionInclinaison("input/binaire.png", "output/correction_inclinaison.png");
-	//testCorrectionInclinaisonEliminerBordure("input/rot2.png", "output/correction_inclinaison.png");
+	vector<vector<Point> > contours;
+	vector<Vec4i> hierarchy;
 
-	//test();
-	//testHistogrammeProjection("input/test.png");
+	findContours(src, contours, hierarchy,CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE,Point(0,0));
 
+	// iterate through all the top-level contours,
+	// draw each connected component with its own random color
+	int idx = 0;
+	for (int i = 0; i < contours.size();i++)
+	{
+		Scalar color(rand() & 255, rand() & 255, rand() & 255);
+		drawContours(dst, contours, i, color, 1, 8, hierarchy,0);
+	}
 
-	testSegmentationProjection("input/binaire.png");
-
+	namedWindow("Components", 1);
+	imshow("Components", dst);
 	waitKey(0);
-	system("pause");
 	return 0;
 }
