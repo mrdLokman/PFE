@@ -12,6 +12,8 @@ using namespace std;
 using namespace cv;
 
 //*******************************************************************img source
+
+
  //string cars = "C:/Users/lool/Desktop/PFE/dataset image/cars/*.bmp";
  string cars = "C:/Users/Merdji/Documents/Visual Studio 2015/Projects/PFE/cars";
 
@@ -19,6 +21,7 @@ using namespace cv;
  
 
  int main() {
+
 	 cv::String path(cars); //select only bmp
 	 vector<cv::String> fn;
 	 vector<cv::Mat>windows;
@@ -107,13 +110,16 @@ using namespace cv;
 		 imshow("segmentation projection", display_images(testSegmentationProjection(normalisee),80,1));
 		 //testSegmentationACC("input/binaire.png");
 		 imshow("segmentation CCA", display_images(testSegmentationACC(normalisee), 80, 1));
-		 imshow("pretraitement", display_images(windows, 400, 6));
+
+		 imshow("pretraitement", display_images(windows, 1000, 6));
+
 		 waitKey(0);
 		 cvDestroyWindow("pretraitement");
 		 cvDestroyWindow("segmentation CCA");
 		 cvDestroyWindow("segmentation projection");
 		 cvDestroyWindow("plaque");
 		
+
 	 }
 	 
 

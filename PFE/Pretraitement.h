@@ -52,4 +52,6 @@ Mat afficheHistogrammeProjectionHorizontal(vector<int> hist);
 Mat binarisation(Mat origine, int type = 0, int filtre = 0);
 
 Mat normalisation(Mat origine, int hauteurNorm);
+
+Mat operationsMorphologiques(Mat origine);
 #endif
