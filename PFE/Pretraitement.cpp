@@ -425,17 +425,13 @@ Mat normalisation(Mat origine, int hauteurNorm) {
 
 	int hauteur = origine.rows;
 
-	Point center = Point(origine.cols / 2, origine.rows / 2);
-	double angle = 0.0;
-	double scale = ((double)hauteurNorm)/((double)hauteur);
+	double scale = ((double)hauteurNorm) / ((double)hauteur);
 	cout << "scale = " << scale << endl;
 
 	int largeurNorm = origine.cols * scale;
 
-	Mat dest(Size(largeurNorm, hauteurNorm),CV_8U);
-
-	rot_mat = getRotationMatrix2D(center, angle, scale);
-	warpAffine(origine, dest, rot_mat, origine.size(), 1, 0, 0);
+	Mat dest;
+	resize(origine, dest, Size(largeurNorm, hauteurNorm));
 
 	return dest;
 }

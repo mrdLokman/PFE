@@ -27,7 +27,7 @@ void test() {
 }
 
 
-int main()
+int main1()
 {
 	Mat src= imread("C:/Users/lool/PFE/PFE/output/segACC/000000.png", 0);
 	// the first command-line parameter must be a filename of the binary

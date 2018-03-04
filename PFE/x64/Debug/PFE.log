@@ -1,10 +1,6 @@
-﻿Build started 3/4/2018 11:57:38 PM.
+﻿Build started 3/5/2018 12:16:35 AM.
      1>Project "C:\Users\lool\PFE\PFE\PFE.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IF:\OpenCV\opencv\build\include /ZI /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt main_prog.cpp
-         main_prog.cpp
-     1>c:\users\lool\pfe\pfe\main_prog.cpp(9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-       Link:
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\lool\PFE\x64\Debug\PFE.exe" /INCREMENTAL /NOLOGO opencv_world310d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\lool\PFE\x64\Debug\PFE.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\lool\PFE\x64\Debug\PFE.lib" /MACHINE:X64 x64\Debug\classifier.obj
          x64\Debug\Composant.obj
          x64\Debug\Selector.obj
@@ -20,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.37
+Time Elapsed 00:00:00.30
