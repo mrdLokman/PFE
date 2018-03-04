@@ -435,3 +435,7 @@ Mat normalisation(Mat origine, int hauteurNorm) {
 
 	return dest;
 }
+
+Mat operationsMorphologiques(Mat origine) {
+
+}
