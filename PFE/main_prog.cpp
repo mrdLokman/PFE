@@ -35,6 +35,7 @@ int testContours(string imageName) {
 	/// Find contours
 	findContours(img, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 	cout << contours.size();
+	
 	/// Draw contours
 	Mat drawing = Mat::zeros(img.size(), CV_8UC3);
 	RNG rng ;
