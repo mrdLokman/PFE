@@ -1,7 +1,5 @@
-
-*
 /*
-!.gitignore
+*
 !*.cpp
 !*.h
-
+!*.gitignore
