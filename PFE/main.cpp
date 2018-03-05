@@ -20,7 +20,7 @@ string cars = "C:/Users/lool/Desktop/PFE/dataset image/cars/*.bmp";
 //*****************************************************************
  
 
- int main() {
+ int main1() {
 
 	 cv::String path(cars); //select only bmp
 	 vector<cv::String> fn;
